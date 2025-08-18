@@ -150,16 +150,6 @@ export function Navbar() {
 						<div className="hidden md:flex items-center space-x-3 relative z-30">
 							<Button
 								asChild
-								variant="outline"
-								size="sm"
-								className="transition-all duration-200"
-							>
-								<Link href="/login" aria-label="Se connecter">
-									Connexion
-								</Link>
-							</Button>
-							<Button
-								asChild
 								className="shadow-sm transition-shadow duration-200"
 							>
 								<Link
@@ -238,13 +228,6 @@ export function Navbar() {
 								</nav>
 
 								<div className="border-t p-6 space-y-3">
-									<SheetClose asChild>
-										<Button asChild variant="outline" className="w-full">
-											<Link href="/login" aria-label="Se connecter">
-												Connexion
-											</Link>
-										</Button>
-									</SheetClose>
 									<SheetClose asChild>
 										<Button asChild className="w-full">
 											<Link
