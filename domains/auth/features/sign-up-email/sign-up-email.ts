@@ -8,6 +8,7 @@ import {
 	createValidationErrorResponse,
 	ServerAction,
 } from "@/shared/types/server-action";
+import { headers } from "next/headers";
 import { signUpEmailSchema } from "./sign-up-email-schema";
 
 export const signUpEmail: ServerAction<null, typeof signUpEmailSchema> = async (
@@ -15,6 +16,15 @@ export const signUpEmail: ServerAction<null, typeof signUpEmailSchema> = async (
 	formData
 ) => {
 	try {
+		const session = await auth.api.getSession({
+			headers: await headers(),
+		});
+		if (session?.user?.id) {
+			return createErrorResponse(
+				ActionStatus.UNAUTHORIZED,
+				"Vous êtes déjà connecté"
+			);
+		}
 		const rawData = {
 			email: formData.get("email") as string,
 			password: formData.get("password") as string,

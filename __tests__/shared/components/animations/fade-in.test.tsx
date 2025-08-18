@@ -4,11 +4,22 @@ import { render, screen } from "@testing-library/react";
 // Mock framer-motion
 jest.mock("framer-motion", () => ({
 	motion: {
-		div: ({ children, ...props }: any) => (
-			<div data-testid="motion-div" {...props}>
-				{children}
-			</div>
-		),
+		div: ({ children, className, ...props }: any) => {
+			// Filter out framer-motion specific props to avoid React warnings
+			const {
+				whileInView,
+				initial,
+				animate,
+				transition,
+				viewport,
+				...domProps
+			} = props;
+			return (
+				<div data-testid="motion-div" className={className} {...domProps}>
+					{children}
+				</div>
+			);
+		},
 	},
 }));
 

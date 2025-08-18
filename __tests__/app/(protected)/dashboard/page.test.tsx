@@ -1,6 +1,21 @@
 import DashboardPage from "@/app/dashboard/page";
 import { render, screen } from "@testing-library/react";
 
+// Mock de countContacts pour éviter les problèmes avec better-auth
+jest.mock("@/domains/contact/features/count-contacts", () => ({
+	countContacts: jest.fn().mockResolvedValue(5),
+}));
+
+// Mock de ContactStatus
+jest.mock("@/app/generated/prisma", () => ({
+	ContactStatus: {
+		IN_PROGRESS: "IN_PROGRESS",
+		COMPLETED: "COMPLETED",
+		PENDING: "PENDING",
+		ARCHIVED: "ARCHIVED",
+	},
+}));
+
 // Mock des composants partagés
 jest.mock("@/shared/components/page-container", () => ({
 	PageContainer: ({ children }: { children: React.ReactNode }) => (
@@ -24,45 +39,42 @@ jest.mock("@/shared/components/page-header", () => ({
 }));
 
 describe("Dashboard Page", () => {
-	it("should render page container", () => {
-		render(<DashboardPage />);
-		expect(screen.getByTestId("page-container")).toBeInTheDocument();
-	});
-
-	it("should render page header with correct title and description", () => {
-		render(<DashboardPage />);
-
-		expect(screen.getByTestId("page-header")).toBeInTheDocument();
-		expect(screen.getByText("Dashboard")).toBeInTheDocument();
+	it("should render page container", async () => {
+		const { container } = render(await DashboardPage());
 		expect(
-			screen.getByText("Bienvenue sur votre tableau de bord")
+			container.querySelector('[data-testid="page-container"]')
 		).toBeInTheDocument();
 	});
 
-	it("should render admin content", () => {
-		render(<DashboardPage />);
-		expect(screen.getByText("Admin")).toBeInTheDocument();
+	it("should render page header with correct title and description", async () => {
+		const { container } = render(await DashboardPage());
+
+		expect(
+			container.querySelector('[data-testid="page-header"]')
+		).toBeInTheDocument();
+		expect(screen.getByText("Tableau de bord")).toBeInTheDocument();
+		expect(
+			screen.getByText("Vue d'ensemble de votre activité")
+		).toBeInTheDocument();
 	});
 
-	it("should have proper structure", () => {
-		render(<DashboardPage />);
-
-		const container = screen.getByTestId("page-container");
-		const header = screen.getByTestId("page-header");
-		const content = screen.getByText("Admin");
-
-		expect(container).toContainElement(header);
-		expect(container).toContainElement(content);
+	it("should render statistics cards", async () => {
+		render(await DashboardPage());
+		expect(screen.getByText("Total des contacts")).toBeInTheDocument();
+		expect(screen.getByText("En cours")).toBeInTheDocument();
+		expect(screen.getByText("Traités")).toBeInTheDocument();
 	});
 
-	it("should render without errors", () => {
-		expect(() => render(<DashboardPage />)).not.toThrow();
+	it("should render statistics values", async () => {
+		render(await DashboardPage());
+		// Should render the mocked value (5) multiple times
+		const statValues = screen.getAllByText("5");
+		expect(statValues.length).toBeGreaterThan(0);
+	});
+
+	it("should render quick actions and recent activity", async () => {
+		render(await DashboardPage());
+		expect(screen.getByText("Actions rapides")).toBeInTheDocument();
+		expect(screen.getByText("Activité récente")).toBeInTheDocument();
 	});
 });
-
-
-
-
-
-
-

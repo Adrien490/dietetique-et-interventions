@@ -2,6 +2,17 @@ import { Navbar } from "@/app/(marketing)/components/navbar";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+// Mock des modules auth
+jest.mock("@/domains/auth/features/logout/logout-button", () => ({
+	LogoutButton: () => (
+		<button data-testid="logout-button">Se déconnecter</button>
+	),
+}));
+
+jest.mock("@/domains/auth/lib/auth", () => ({
+	Session: {},
+}));
+
 // Mock des hooks
 jest.mock("@/shared/hooks/use-mobile", () => ({
 	useIsMobile: jest.fn(() => false),
