@@ -11,9 +11,9 @@
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
 		"lighthouse": "lighthouse http://localhost:3000 --output-path=./lighthouse-report.html --view",
-		"lighthouse:prod": "lighthouse https://diet-clic.vercel.app --output-path=./lighthouse-report-prod.html --view",
+		"lighthouse:prod": "lighthouse https://dietetique-et-interventions.manonchaillou.fr --output-path=./lighthouse-report-prod.html --view",
 		"test:a11y": "pa11y http://localhost:3000",
-		"test:a11y:prod": "pa11y https://diet-clic.vercel.app",
+		"test:a11y:prod": "pa11y https://dietetique-et-interventions.manonchaillou.fr",
 		"audit:security": "npm audit --audit-level=moderate",
 		"type-check": "tsc --noEmit",
 		"analyze": "cross-env ANALYZE=true next build"

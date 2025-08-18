@@ -141,7 +141,7 @@ prisma/           # Schéma & migrations
 | **Accessibilité**    | ≥ 95         | 100/100         | `npm run lighthouse:prod` |
 | **Bonnes pratiques** | ≥ 95         | 100/100         | `npm run lighthouse:prod` |
 | **SEO**              | ≥ 95         | 100/100         | `npm run lighthouse:prod` |
-| **Couverture tests** | ≥ 30% global | 54.16%          | `npm run test:coverage`   |
+| **Couverture tests** | ≥ 30% global | 39.97%          | `npm run test:coverage`   |
 
 ---
 
@@ -155,8 +155,8 @@ prisma/           # Schéma & migrations
 
 #### Badge de Couverture
 
-![Coverage Badge](https://img.shields.io/badge/coverage-39.54%25-brightgreen)
-![Tests Status](https://img.shields.io/badge/tests-1128%2F1128%20passing-brightgreen)
+![Coverage Badge](https://img.shields.io/badge/coverage-39.97%25-brightgreen)
+![Tests Status](https://img.shields.io/badge/tests-1129%2F1129%20passing-brightgreen)
 ![Test Success Rate](https://img.shields.io/badge/success%20rate-100%25-brightgreen)
 
 **Qualité du Code :**
@@ -224,11 +224,11 @@ prisma/           # Schéma & migrations
 ### 3.2 C2.2.2 – Harnais de tests unitaires
 
 **Outils** : Jest, RTL, jsdom, mocks (Resend, UploadThing, Better Auth)
-**Couverture** : 1128 tests passants sur 1128 (100% de réussite) avec 39.54% de couverture de code (statements/lines) – actions serveur, schémas Zod, templates email, composants UI (Accordion, Avatar, Checkbox, Dialog, Progress, Table, DropdownMenu, Form, Popover, RadioGroup, Sheet, Tooltip), animations (Rotate, Slide, Stagger), hooks, utils, autocomplete, Hero component, Badge, Textarea, PageHeader, CheckboxField, Dashboard, Footer, ContactForm, page d'accueil
+**Couverture** : 1129 tests passants sur 1129 (100% de réussite) avec 39.97% de couverture de code (statements/lines) – actions serveur, schémas Zod, templates email, composants UI (Accordion, Avatar, Checkbox, Dialog, Progress, Table, DropdownMenu, Form, Popover, RadioGroup, Sheet, Tooltip), animations (Rotate, Slide, Stagger), hooks, utils, autocomplete, Hero component, Badge, Textarea, PageHeader, CheckboxField, Dashboard, Footer, ContactForm, page d'accueil
 
 #### Améliorations Apportées à la Couverture
 
-**État actuel :** Couverture de code de 39.54% avec 100% de réussite des tests
+**État actuel :** Couverture de code de 39.97% avec 100% de réussite des tests
 
 **Scripts npm disponibles :**
 
@@ -307,20 +307,7 @@ npm run test:a11y:prod   # ✅ Fonctionne immédiatement
 | Form Context            | 10/10          | 10           | 100%             | ✅ PASS     |
 | UI Components           | 90%+           | Variable     | 90%+             | ✅ PASS     |
 | Shared Utils            | 90%+           | Variable     | 90%+             | ✅ PASS     |
-| **GLOBAL (Tous tests)** | **983**        | **1041**     | **94.4%**        | ✅ **PASS** |
-
-**Améliorations Récentes :**
-
-- Configuration Jest mise à jour pour mieux gérer les modules ESM (Better Auth, uncrypto)
-- Mocks améliorés pour Better Auth, Prisma et Next.js Image
-- Correction complète des tests du composant Hero (20/20 tests passent)
-- Correction des tests d'Autocomplete avec gestion correcte de `asChild` et `minQueryLength`
-- Création des tests Form Context avec mocks appropriés pour `@tanstack/react-form`
-- Tests passants : 1128/1128 (100% de réussite) - amélioration de +337 tests depuis la base
-- Corrections majeures : Badge, Textarea, PageHeader, CheckboxField, Dashboard page, use-active-navbar-item hook
-- Tests d'autocomplete entièrement fonctionnels
-- Gestion des animations mockées dans les tests
-- Métriques de couverture détaillées : 39.54% statements/lines, 58.56% branches, 43.55% functions
+| **GLOBAL (Tous tests)** | **1129**       | **1129**     | **100%**         | ✅ **PASS** |
 
 ---
 
@@ -561,7 +548,7 @@ npm run test:a11y:prod   # ✅ Fonctionne immédiatement
 
 #### Tests Unitaires Implémentés
 
-**Modules testés (1128/1128 tests passants - 100%) :**
+**Modules testés (1129/1129 tests passants - 100%) :**
 
 - ✅ **Pages app/** - Home, Dashboard, Client, Layouts publics/protégés
 - ✅ **Validation des schémas** - Contact, auth, sign-in/sign-up
