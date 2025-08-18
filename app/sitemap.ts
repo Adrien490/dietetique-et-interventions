@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-	const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+	const baseUrl = process.env.BETTER_AUTH_URL
+		? `https://${process.env.BETTER_AUTH_URL}`
+		: "https://dietetique-et-interventions.manonchaillou.fr";
 	const currentDate = new Date();
 
 	return [

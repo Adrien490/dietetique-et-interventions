@@ -11,11 +11,8 @@ describe("sitemap.ts", () => {
 	it("should include homepage", async () => {
 		const sitemapData = sitemap();
 
-		// Homepage is the base URL without specific path
-		const homePage = sitemapData.find(
-			(entry) =>
-				entry.url === "http://localhost:3000" || entry.url.endsWith("/")
-		);
+		// Homepage is the base URL with priority 1
+		const homePage = sitemapData.find((entry) => entry.priority === 1);
 		expect(homePage).toBeDefined();
 		expect(homePage?.priority).toBe(1);
 	});

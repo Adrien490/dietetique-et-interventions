@@ -42,8 +42,8 @@ describe("robots.ts", () => {
 	it("should include domain in sitemap URL", () => {
 		const robotsConfig = robots();
 		
-		// In test environment, we expect either undefined or localhost
-		expect(robotsConfig.sitemap).toMatch(/(undefined|localhost|diet-clic|manon-chaillou|nutrition)/);
+		// In test environment, we expect either undefined, localhost, or production domain
+		expect(robotsConfig.sitemap).toMatch(/(undefined|localhost|diet-clic|manon-chaillou|nutrition|dietetique-et-interventions)/);
 	});
 
 	it("should be callable function", () => {
