@@ -1,7 +1,5 @@
 "use client";
 
-import { LogoutButton } from "@/domains/auth/features/logout/logout-button";
-import { Session } from "@/domains/auth/lib/auth";
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -11,12 +9,6 @@ import {
 	BreadcrumbSeparator,
 } from "@/shared/components/ui/breadcrumb";
 import { Button } from "@/shared/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "@/shared/components/ui/dropdown-menu";
 import {
 	Sheet,
 	SheetClose,
@@ -28,24 +20,16 @@ import {
 import { navbarItems } from "@/shared/constants/navbar-items";
 import { useActiveNavbarItem } from "@/shared/hooks/use-active-navbar-item";
 import { useIsScrolled } from "@/shared/hooks/use-is-scrolled";
+import { useIsMobile } from "@/shared/hooks/use-mobile";
 import { cn } from "@/shared/utils";
-import { Home, LogOut, Menu, Settings, User as UserIcon } from "lucide-react";
-import Image from "next/image";
+import { Home, Menu } from "lucide-react";
 import Link from "next/link";
-import { useIsMobile } from "../../../shared/hooks/use-mobile";
 
-interface NavbarProps {
-	user?: Session["user"] | null;
-}
-
-export function Navbar({ user = null }: NavbarProps) {
+export function Navbar() {
 	const isMobile = useIsMobile();
 	const threshold = isMobile ? 25 : 100;
 	const isScrolled = useIsScrolled(threshold);
 	const { isMenuItemActive, activeSection } = useActiveNavbarItem();
-
-	// Vérifier si l'utilisateur est admin
-	const isAdmin = user?.role === "ADMIN";
 
 	// Generate breadcrumb items based on active section
 	const getBreadcrumbItems = () => {
@@ -164,91 +148,16 @@ export function Navbar({ user = null }: NavbarProps) {
 
 						{/* Boutons CTA desktop */}
 						<div className="hidden md:flex items-center space-x-3 relative z-30">
-							{user ? (
-								<>
-									{isAdmin && (
-										<Button
-											asChild
-											variant="ghost"
-											size="sm"
-											className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-										>
-											<Link
-												href="/dashboard"
-												aria-label="Accéder au tableau de bord administrateur"
-											>
-												<Settings className="h-4 w-4" aria-hidden="true" />
-											</Link>
-										</Button>
-									)}
-									{/* User Dropdown */}
-									<div className="flex items-center">
-										<DropdownMenu>
-											<DropdownMenuTrigger asChild>
-												<Button
-													variant="ghost"
-													size="sm"
-													className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
-													aria-label={`Menu utilisateur - ${user.name}`}
-												>
-													<div className="flex h-6 w-6 items-center justify-center rounded-full bg-muted">
-														{user.image ? (
-															<Image
-																src={user.image}
-																alt={user.name || "User"}
-																width={24}
-																height={24}
-																className="h-6 w-6 rounded-full object-cover"
-															/>
-														) : (
-															<UserIcon className="h-3 w-3" />
-														)}
-													</div>
-													<span className="text-sm font-medium truncate max-w-20">
-														{user.name}
-													</span>
-												</Button>
-											</DropdownMenuTrigger>
-											<DropdownMenuContent align="end" className="w-48">
-												<DropdownMenuItem asChild>
-													<LogoutButton className="flex w-full items-center gap-2 px-2 py-1.5 cursor-pointer text-muted-foreground hover:text-foreground">
-														<LogOut className="h-4 w-4" />
-														<span>Déconnexion</span>
-													</LogoutButton>
-												</DropdownMenuItem>
-											</DropdownMenuContent>
-										</DropdownMenu>
-									</div>
-								</>
-							) : (
-								<>
-									{isAdmin && (
-										<Button
-											asChild
-											variant="ghost"
-											size="sm"
-											className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-										>
-											<Link
-												href="/dashboard"
-												aria-label="Accéder au tableau de bord administrateur"
-											>
-												<Settings className="h-4 w-4" aria-hidden="true" />
-											</Link>
-										</Button>
-									)}
-									<Button
-										asChild
-										variant="outline"
-										size="sm"
-										className="transition-all duration-200"
-									>
-										<Link href="/login" aria-label="Se connecter">
-											Connexion
-										</Link>
-									</Button>
-								</>
-							)}
+							<Button
+								asChild
+								variant="outline"
+								size="sm"
+								className="transition-all duration-200"
+							>
+								<Link href="/login" aria-label="Se connecter">
+									Connexion
+								</Link>
+							</Button>
 							<Button
 								asChild
 								className="shadow-sm transition-shadow duration-200"
@@ -329,95 +238,13 @@ export function Navbar({ user = null }: NavbarProps) {
 								</nav>
 
 								<div className="border-t p-6 space-y-3">
-									{user ? (
-										<>
-											{isAdmin && (
-												<SheetClose asChild>
-													<Button
-														asChild
-														variant="ghost"
-														className="w-full text-muted-foreground hover:text-foreground justify-start"
-													>
-														<Link
-															href="/dashboard"
-															aria-label="Accéder au tableau de bord administrateur"
-														>
-															<Settings
-																className="h-4 w-4 mr-2"
-																aria-hidden="true"
-															/>
-															Tableau de bord
-														</Link>
-													</Button>
-												</SheetClose>
-											)}
-											{/* User info mobile */}
-											<div className="flex items-center gap-3 p-3 border rounded-lg">
-												<div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted">
-													{user.image ? (
-														<Image
-															src={user.image}
-															alt={user.name || "User"}
-															width={32}
-															height={32}
-															className="h-8 w-8 rounded-full object-cover"
-														/>
-													) : (
-														<UserIcon className="h-4 w-4" />
-													)}
-												</div>
-												<div className="flex-1 min-w-0">
-													<p className="text-sm font-medium truncate">
-														{user.name}
-													</p>
-													<p className="text-xs text-muted-foreground truncate">
-														{user.email}
-													</p>
-												</div>
-											</div>
-											<SheetClose asChild>
-												<LogoutButton className="w-full">
-													<Button
-														variant="outline"
-														className="w-full justify-start text-muted-foreground hover:text-foreground"
-													>
-														<LogOut className="h-4 w-4 mr-2" />
-														Déconnexion
-													</Button>
-												</LogoutButton>
-											</SheetClose>
-										</>
-									) : (
-										<>
-											{isAdmin && (
-												<SheetClose asChild>
-													<Button
-														asChild
-														variant="ghost"
-														className="w-full text-muted-foreground hover:text-foreground justify-start"
-													>
-														<Link
-															href="/dashboard"
-															aria-label="Accéder au tableau de bord administrateur"
-														>
-															<Settings
-																className="h-4 w-4 mr-2"
-																aria-hidden="true"
-															/>
-															Tableau de bord
-														</Link>
-													</Button>
-												</SheetClose>
-											)}
-											<SheetClose asChild>
-												<Button asChild variant="outline" className="w-full">
-													<Link href="/login" aria-label="Se connecter">
-														Connexion
-													</Link>
-												</Button>
-											</SheetClose>
-										</>
-									)}
+									<SheetClose asChild>
+										<Button asChild variant="outline" className="w-full">
+											<Link href="/login" aria-label="Se connecter">
+												Connexion
+											</Link>
+										</Button>
+									</SheetClose>
 									<SheetClose asChild>
 										<Button asChild className="w-full">
 											<Link
