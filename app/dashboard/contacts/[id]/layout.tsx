@@ -1,8 +1,8 @@
-import { getContact } from "@/domains/contact/features/get-contact";
+import { getContactRequest } from "@/domains/contact-request/features/get-contact-request";
 import {
-	ContactHeader,
-	ContactHeaderSkeleton,
-} from "@/domains/contact/features/get-contact/components";
+	ContactRequestHeader,
+	ContactRequestHeaderSkeleton,
+} from "@/domains/contact-request/features/get-contact-request/components";
 import { PageContainer } from "@/shared/components/page-container";
 import { Suspense } from "react";
 
@@ -18,8 +18,10 @@ export default async function ContactLayout({ children, params }: Props) {
 
 	return (
 		<PageContainer className="pt-4">
-			<Suspense fallback={<ContactHeaderSkeleton />}>
-				<ContactHeader contactPromise={getContact({ id })} />
+			<Suspense fallback={<ContactRequestHeaderSkeleton />}>
+				<ContactRequestHeader
+					contactRequestPromise={getContactRequest({ id })}
+				/>
 			</Suspense>
 
 			{children}

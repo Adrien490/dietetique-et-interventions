@@ -1,15 +1,15 @@
 import { ContactStatus, Prisma } from "@/app/generated/prisma";
 import {
-	GET_CONTACTS_SORT_FIELDS,
-	getContacts,
-} from "@/domains/contact/features/get-contacts";
+	GET_CONTACT_REQUESTS_SORT_FIELDS,
+	getContactRequests,
+} from "@/domains/contact-request/features/get-contact-requests";
 
 import {
-	ContactDataTable,
-	ContactDataTableSkeleton,
-	ContactFilterSheet,
-} from "@/domains/contact/features/get-contacts/components";
-import { RefreshContactsButton } from "@/domains/contact/features/refresh-contacts";
+	ContactRequestDataTable,
+	ContactRequestDataTableSkeleton,
+	ContactRequestFilterSheet,
+} from "@/domains/contact-request/features/get-contact-requests/components";
+import { RefreshContactRequestsButton } from "@/domains/contact-request/features/refresh-contact-requests";
 
 import { PageContainer } from "@/shared/components/page-container";
 import { PageHeader } from "@/shared/components/page-header";
@@ -79,7 +79,7 @@ export default async function ContactsPage({ searchParams }: PageProps) {
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger asChild>
-							<RefreshContactsButton />
+							<RefreshContactRequestsButton />
 						</TooltipTrigger>
 						<TooltipContent>
 							<p>Rafraîchir la liste des demandes de contact</p>
@@ -112,7 +112,7 @@ export default async function ContactsPage({ searchParams }: PageProps) {
 				/>
 
 				{!isArchivedView && (
-					<ContactFilterSheet
+					<ContactRequestFilterSheet
 						activeFiltersCount={activeFiltersCount}
 						isArchivedView={isArchivedView}
 					/>
@@ -135,14 +135,14 @@ export default async function ContactsPage({ searchParams }: PageProps) {
 				)}
 			</Toolbar>
 
-			<Suspense fallback={<ContactDataTableSkeleton />}>
-				<ContactDataTable
+			<Suspense fallback={<ContactRequestDataTableSkeleton />}>
+				<ContactRequestDataTable
 					isArchivedView={isArchivedView}
 					selectedContactIds={selectedContactIds}
-					contactsPromise={getContacts({
+					contactRequestsPromise={getContactRequests({
 						perPage: Number(perPage) || 10,
 						page: Number(page) || 1,
-						sortBy: sortBy as (typeof GET_CONTACTS_SORT_FIELDS)[number],
+						sortBy: sortBy as (typeof GET_CONTACT_REQUESTS_SORT_FIELDS)[number],
 						sortOrder: sortOrder as Prisma.SortOrder,
 						search,
 						filters,

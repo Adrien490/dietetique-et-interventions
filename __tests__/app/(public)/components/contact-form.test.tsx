@@ -1,4 +1,4 @@
-import { ContactForm } from "@/app/(marketing)/components/contact-form";
+import { ContactForm } from "@/domains/contact-request/features/create-contact-request/create-contact-request-form";
 import { render, screen } from "@testing-library/react";
 
 // Mock all external dependencies
@@ -313,7 +313,3 @@ describe("ContactForm Component", () => {
 		expect(textarea).toHaveAttribute("maxLength", "2000");
 	});
 });
-
-
-
-

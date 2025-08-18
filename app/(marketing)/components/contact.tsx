@@ -1,3 +1,4 @@
+import { CreateContactRequestForm } from "@/domains/contact-request/features/create-contact-request/create-contact-request-form";
 import { Reveal } from "@/shared/components/animations";
 import {
 	Tooltip,
@@ -6,7 +7,6 @@ import {
 } from "@/shared/components/ui/tooltip";
 import { Mail, MapPin } from "lucide-react";
 import Link from "next/link";
-import { ContactForm } from "./contact-form";
 
 export function Contact() {
 	return (
@@ -131,7 +131,7 @@ export function Contact() {
 					<h3 className="text-xl font-semibold text-foreground mb-6">
 						Formulaire de contact
 					</h3>
-					<ContactForm />
+					<CreateContactRequestForm />
 				</div>
 			</div>
 		</section>

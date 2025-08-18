@@ -1,5 +1,5 @@
 import { ContactStatus } from "@/app/generated/prisma";
-import { countContacts } from "@/domains/contact/features/count-contacts";
+import { countContactRequests } from "@/domains/contact-request/features/count-contact-requests";
 import { PageContainer } from "@/shared/components/page-container";
 import { PageHeader } from "@/shared/components/page-header";
 import {
@@ -18,19 +18,19 @@ import {
 
 export default async function DashboardPage() {
 	// Récupération des statistiques
-	const totalContacts = await countContacts({ filters: {} });
+	const totalContactRequests = await countContactRequests({ filters: {} });
 
-	const inProgressContacts = await countContacts({
+	const inProgressContactRequests = await countContactRequests({
 		filters: { status: ContactStatus.IN_PROGRESS },
 	});
-	const completedContacts = await countContacts({
+	const completedContactRequests = await countContactRequests({
 		filters: { status: ContactStatus.COMPLETED },
 	});
 
 	const stats = [
 		{
 			title: "Total des contacts",
-			value: totalContacts,
+			value: totalContactRequests,
 			icon: Users,
 			description: "Nombre total de demandes",
 			color: "text-blue-600",
@@ -38,14 +38,14 @@ export default async function DashboardPage() {
 
 		{
 			title: "En cours",
-			value: inProgressContacts,
+			value: inProgressContactRequests,
 			icon: TrendingUp,
 			description: "Demandes en traitement",
 			color: "text-yellow-600",
 		},
 		{
 			title: "Traités",
-			value: completedContacts,
+			value: completedContactRequests,
 			icon: CheckCircle,
 			description: "Demandes finalisées",
 			color: "text-green-600",
@@ -113,8 +113,8 @@ export default async function DashboardPage() {
 					</CardHeader>
 					<CardContent>
 						<div className="text-sm text-muted-foreground">
-							{totalContacts > 0
-								? `${totalContacts} demande(s) de contact au total`
+							{totalContactRequests > 0
+								? `${totalContactRequests} demande(s) de contact au total`
 								: "Aucune demande de contact pour le moment"}
 						</div>
 					</CardContent>

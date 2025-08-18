@@ -1,4 +1,4 @@
-import { contactSchema } from "@/shared/schemas/contact-schema";
+import { contactSchema } from "@/domains/contact-request/features/create-contact-request/create-contact-request-schema";
 
 describe("contactSchema", () => {
 	describe("fullName validation", () => {

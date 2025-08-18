@@ -1,4 +1,4 @@
-import { useContactForm } from "@/shared/hooks/use-contact-form";
+import { useContactForm } from "@/domains/contact-request/features/create-contact-request/use-create-contact-request-form";
 import { renderHook } from "@testing-library/react";
 
 // Mock du hook useActionState de React

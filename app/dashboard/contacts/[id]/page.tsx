@@ -1,4 +1,4 @@
-import { getContact } from "@/domains/contact/features/get-contact";
+import { getContactRequest } from "@/domains/contact-request/features/get-contact-request";
 import { ContentCard } from "@/shared/components/content-card";
 import { EmptyState } from "@/shared/components/empty-state";
 import { Button } from "@/shared/components/ui/button";
@@ -44,9 +44,9 @@ function getFileIcon(filename: string) {
 export default async function ContactPage({ params }: Props) {
 	const { id } = await params;
 
-	const contact = await getContact({ id });
+	const contactRequest = await getContactRequest({ id });
 
-	if (!contact) {
+	if (!contactRequest) {
 		return <EmptyState title="Contact non trouvé" />;
 	}
 
@@ -62,73 +62,74 @@ export default async function ContactPage({ params }: Props) {
 					<ContentCard title="Message">
 						<div className="prose prose-sm max-w-none">
 							<p className="text-sm leading-relaxed whitespace-pre-wrap break-words overflow-wrap-anywhere">
-								{contact.message}
+								{contactRequest.message}
 							</p>
 						</div>
 					</ContentCard>
 
 					{/* Pièces jointes */}
-					{contact.attachments && contact.attachments.length > 0 && (
-						<ContentCard
-							title={`Pièces jointes (${contact.attachments.length})`}
-						>
-							<div className="space-y-3">
-								{contact.attachments.map((attachment) => {
-									const FileIconComponent = getFileIcon(attachment.filename);
+					{contactRequest.attachments &&
+						contactRequest.attachments.length > 0 && (
+							<ContentCard
+								title={`Pièces jointes (${contactRequest.attachments.length})`}
+							>
+								<div className="space-y-3">
+									{contactRequest.attachments.map((attachment) => {
+										const FileIconComponent = getFileIcon(attachment.filename);
 
-									return (
-										<div
-											key={attachment.id}
-											className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
-										>
-											<div className="flex items-center gap-3 min-w-0 flex-1">
-												<FileIconComponent className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-												<div className="min-w-0 flex-1">
-													<h3
-														className="font-medium text-sm truncate"
-														title={attachment.filename}
-													>
-														{attachment.filename}
-													</h3>
-													<p className="text-xs text-muted-foreground">
-														Ajouté le{" "}
-														{format(
-															new Date(attachment.createdAt),
-															"dd/MM/yyyy",
-															{ locale: fr }
-														)}
-													</p>
+										return (
+											<div
+												key={attachment.id}
+												className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
+											>
+												<div className="flex items-center gap-3 min-w-0 flex-1">
+													<FileIconComponent className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+													<div className="min-w-0 flex-1">
+														<h3
+															className="font-medium text-sm truncate"
+															title={attachment.filename}
+														>
+															{attachment.filename}
+														</h3>
+														<p className="text-xs text-muted-foreground">
+															Ajouté le{" "}
+															{format(
+																new Date(attachment.createdAt),
+																"dd/MM/yyyy",
+																{ locale: fr }
+															)}
+														</p>
+													</div>
+												</div>
+
+												{/* Actions */}
+												<div className="flex gap-2 flex-shrink-0">
+													<Button size="sm" variant="outline" asChild>
+														<a
+															href={attachment.url}
+															target="_blank"
+															rel="noopener noreferrer"
+														>
+															<ExternalLinkIcon className="h-3 w-3 mr-1" />
+															Voir
+														</a>
+													</Button>
+													<Button size="sm" variant="outline" asChild>
+														<a
+															href={attachment.url}
+															download={attachment.filename}
+														>
+															<DownloadIcon className="h-3 w-3 mr-1" />
+															Télécharger
+														</a>
+													</Button>
 												</div>
 											</div>
-
-											{/* Actions */}
-											<div className="flex gap-2 flex-shrink-0">
-												<Button size="sm" variant="outline" asChild>
-													<a
-														href={attachment.url}
-														target="_blank"
-														rel="noopener noreferrer"
-													>
-														<ExternalLinkIcon className="h-3 w-3 mr-1" />
-														Voir
-													</a>
-												</Button>
-												<Button size="sm" variant="outline" asChild>
-													<a
-														href={attachment.url}
-														download={attachment.filename}
-													>
-														<DownloadIcon className="h-3 w-3 mr-1" />
-														Télécharger
-													</a>
-												</Button>
-											</div>
-										</div>
-									);
-								})}
-							</div>
-						</ContentCard>
-					)}
+										);
+									})}
+								</div>
+							</ContentCard>
+						)}
 				</div>
 
 				{/* Colonne latérale (1/3) */}
@@ -141,9 +142,13 @@ export default async function ContactPage({ params }: Props) {
 									Dernière modification
 								</p>
 								<p className="text-sm">
-									{format(new Date(contact.updatedAt), "dd/MM/yyyy à HH:mm", {
-										locale: fr,
-									})}
+									{format(
+										new Date(contactRequest.updatedAt),
+										"dd/MM/yyyy à HH:mm",
+										{
+											locale: fr,
+										}
+									)}
 								</p>
 							</div>
 						</div>
@@ -154,21 +159,23 @@ export default async function ContactPage({ params }: Props) {
 						<div className="grid grid-cols-1 gap-4">
 							<div className="bg-muted/40 rounded-lg p-4 flex flex-col items-center justify-center">
 								<span className="text-2xl font-bold">
-									{contact.attachments?.length || 0}
+									{contactRequest.attachments?.length || 0}
 								</span>
 								<span className="text-xs text-muted-foreground mt-1">
 									Pièce(s) jointe(s)
 								</span>
 							</div>
 
-							{contact.user && (
+							{contactRequest.user && (
 								<div className="bg-muted/40 rounded-lg p-4">
 									<p className="text-xs text-muted-foreground mb-1">
 										Assigné à
 									</p>
-									<p className="text-sm font-medium">{contact.user.name}</p>
+									<p className="text-sm font-medium">
+										{contactRequest.user.name}
+									</p>
 									<p className="text-xs text-muted-foreground">
-										{contact.user.email}
+										{contactRequest.user.email}
 									</p>
 								</div>
 							)}

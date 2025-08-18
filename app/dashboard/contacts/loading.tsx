@@ -1,4 +1,4 @@
-import { ContactDataTableSkeleton } from "@/domains/contact/features/get-contacts/components";
+import { ContactRequestDataTableSkeleton } from "@/domains/contact-request/features/get-contact-requests/components";
 import { PageContainer } from "@/shared/components/page-container";
 import { PageHeader } from "@/shared/components/page-header";
 import { Toolbar } from "@/shared/components/toolbar";
@@ -29,7 +29,7 @@ export default function ContactsLoading() {
 				<Skeleton className="h-9 w-40 shrink-0" />
 			</Toolbar>
 
-			<ContactDataTableSkeleton />
+			<ContactRequestDataTableSkeleton />
 		</PageContainer>
 	);
 }

@@ -1,12 +1,12 @@
-import { navbarItems } from "@/shared/constants/navbar-items";
-import { cn } from "@/shared/utils";
-import { ArrowUp, Heart, Mail, MapPin } from "lucide-react";
-import Link from "next/link";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "../../../shared/components/ui/tooltip";
+} from "@/shared/components/ui/tooltip";
+import { navbarItems } from "@/shared/constants/navbar-items";
+import { cn } from "@/shared/utils";
+import { ArrowUp, Heart, Mail, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const legalLinks = [
 	{ label: "Mentions légales", href: "/legal" },

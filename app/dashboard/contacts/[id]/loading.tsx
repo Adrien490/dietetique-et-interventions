@@ -1,4 +1,4 @@
-import { ContactHeaderSkeleton } from "@/domains/contact/features/get-contact/components";
+import { ContactRequestHeaderSkeleton } from "@/domains/contact-request/features/get-contact-request/components";
 import { ContentCard } from "@/shared/components/content-card";
 import { PageContainer } from "@/shared/components/page-container";
 import { Skeleton } from "@/shared/components/ui/skeleton";
@@ -7,7 +7,7 @@ export default function ContactLoading() {
 	return (
 		<PageContainer className="pt-4">
 			{/* Header avec skeleton */}
-			<ContactHeaderSkeleton />
+			<ContactRequestHeaderSkeleton />
 
 			{/* Contenu principal */}
 			<div className="space-y-6 pb-8">
@@ -88,4 +88,3 @@ export default function ContactLoading() {
 		</PageContainer>
 	);
 }
-
