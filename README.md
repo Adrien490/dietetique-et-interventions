@@ -315,18 +315,18 @@ npm run test:a11y:prod   # ✅ Fonctionne immédiatement
 
 #### Tableau OWASP - Couverture Sécurité
 
-| Faille                                 | Contrôle                     | Test                    | Preuve                            |
-| -------------------------------------- | ---------------------------- | ----------------------- | --------------------------------- |
-| **A01 - Broken Access Control**        | Middleware auth + RBAC       | Rôles ADMIN/CLIENT      | `middleware.ts` + `UserRole` enum |
-| **A02 - Cryptographic Failures**       | HTTPS + env secrets          | npm audit               | `npm audit` 0 vulnerabilities     |
-| **A03 - Injection**                    | Prisma ORM + Zod validation  | Tests payloads hostiles | `contact-schema.test.ts`          |
-| **A04 - Insecure Design**              | Security by design           | DDD + Auth patterns     | Architecture DDD + Better Auth    |
-| **A05 - Security Misconfiguration**    | Headers sécurité + CSP       | Configuration headers   | `next.config.ts` + `vercel.json`  |
-| **A06 - Vulnerable Components**        | npm audit                    | Audit automatique       | `npm audit` clean report          |
-| **A07 - Identification/Auth Failures** | Better Auth + Email/Password | Session + role checks   | `auth.ts` + `getSession()`        |
-| **A08 - Software/Data Integrity**      | Build reproductible          | Vercel build hash       | Build artifacts Vercel            |
-| **A09 - Security Logging Failures**    | Sentry                       | Monitoring actif        | `sentry.server.config.ts`         |
-| **A10 - Server-Side Request Forgery**  | Prisma + validation input    | Zod schema validation   | `contact-schema.ts` validation    |
+| Faille                                 | Contrôle                     | Test                    | Preuve                                        |
+| -------------------------------------- | ---------------------------- | ----------------------- | --------------------------------------------- |
+| **A01 - Broken Access Control**        | Middleware auth + RBAC       | Rôles ADMIN/CLIENT      | `middleware.ts` + `UserRole` enum             |
+| **A02 - Cryptographic Failures**       | HTTPS + env secrets          | npm audit               | `npm audit` 0 vulnerabilities                 |
+| **A03 - Injection**                    | Prisma ORM + Zod validation  | Tests payloads hostiles | `create-contact-request-schema.ts`            |
+| **A04 - Insecure Design**              | Security by design           | DDD + Auth patterns     | Architecture DDD + Better Auth                |
+| **A05 - Security Misconfiguration**    | Headers sécurité + CSP       | Configuration headers   | `next.config.ts` + `vercel.json`              |
+| **A06 - Vulnerable Components**        | npm audit                    | Audit automatique       | `npm audit` clean report                      |
+| **A07 - Identification/Auth Failures** | Better Auth + Email/Password | Session + role checks   | `auth.ts` + `getSession()`                    |
+| **A08 - Software/Data Integrity**      | Build reproductible          | Vercel build hash       | Build artifacts Vercel                        |
+| **A09 - Security Logging Failures**    | Sentry                       | Monitoring actif        | `instrumentation.ts` + `next.config.ts`       |
+| **A10 - Server-Side Request Forgery**  | Prisma + validation input    | Zod schema validation   | `create-contact-request-schema.ts` validation |
 
 #### Accessibilité WCAG 2.1 AA
 
