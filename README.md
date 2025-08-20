@@ -188,20 +188,6 @@ git push origin feature/nom-de-la-fonctionnalite
 # 8. Merge après approbation
 ```
 
-**Configuration GitHub (à activer manuellement) :**
-
-1. **Settings > Branches** : Ajouter une rule pour `main`
-2. **Require a pull request before merging** : ✅ Activé
-3. **Require approvals** : Au moins 1 reviewer
-4. **Require status checks to pass before merging** : ✅ Activé
-   - `npm run test` (tests unitaires)
-   - `npm run build` (build de production)
-   - `npm run lint` (linting)
-5. **Require branches to be up to date** : ✅ Activé
-6. **Restrict pushes that create files** : ✅ Activé
-7. **Allow force pushes** : ❌ Désactivé
-8. **Allow deletions** : ❌ Désactivé
-
 #### Badge de Couverture
 
 ![Coverage Badge](https://img.shields.io/badge/coverage-55.9%25-brightgreen)
