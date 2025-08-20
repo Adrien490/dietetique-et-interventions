@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function AccessibilityPage() {
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+		<main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
 			<div className="container mx-auto px-4 py-8 max-w-4xl">
 				{/* Header */}
 				<div className="text-center mb-8">
@@ -244,6 +244,6 @@ export default function AccessibilityPage() {
 					</CardContent>
 				</Card>
 			</div>
-		</div>
+		</main>
 	);
 }
