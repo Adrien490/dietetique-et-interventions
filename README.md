@@ -175,7 +175,7 @@ prisma/           # Schéma & migrations
 
 #### Présentation du Prototype Réalisé
 
-**Version actuelle :** v1.0 - Déployée sur Vercel
+**Version actuelle :** v1.0.1 - Déployée sur Vercel
 
 #### User Stories Détaillées
 
