@@ -150,8 +150,17 @@ prisma/           # Schéma & migrations
 **Stratégie Git**
 
 - Branches `feature/*` et `fix/*`
-- Commits directs sur `main` possibles
+- Protection de branche `main` activée
+- Checks requis avant merge (tests, build, lint)
 - Conventional Commits recommandés
+
+**Protection de branche main**
+
+- ✅ **Checks requis** : Tests unitaires, build, linting
+- ✅ **Reviews obligatoires** : Au moins 1 approbation
+- ✅ **Push direct interdit** : Seules les PR sont autorisées
+- ✅ **Status checks** : Vercel deployment, tests coverage
+- ✅ **Branch protection rules** : Configurées dans GitHub
 
 #### Badge de Couverture
 
@@ -369,6 +378,14 @@ No issues found!
 - RGAA 4.1 pour conformité légale française
 - Radix UI implémente nativement WCAG
 
+**Déclaration d'accessibilité RGAA 4.1**
+
+- ✅ **Page dédiée** : `/accessibility` avec déclaration complète
+- ✅ **Lien footer** : Accessible depuis toutes les pages
+- ✅ **Voies de recours** : Contact, délais, autorités de contrôle
+- ✅ **Conformité** : Modèle officiel gouvernement français
+- ✅ **Mise à jour** : Date de dernière révision documentée
+
 #### Upload et Gestion des Fichiers
 
 **Types MIME Autorisés :**
@@ -401,11 +418,13 @@ No issues found!
 
 #### VCS et Traçabilité
 
-- **GitHub** : Repository public
+- **GitHub** : Repository public avec protection de branche main
+- **Protection de branche** : Checks requis (tests, build, lint) avant merge
 - **Déploiement** : Vercel auto sur main et preview sur PR
 - **Migrations** : `prisma migrate deploy` à chaque déploiement
 - **Monitoring** : Sentry release health
 - **Rollback** : redeploy build précédent dans Vercel
+- **Versioning** : CHANGELOG.md + releases taguées
 
 ---
 

@@ -11,6 +11,7 @@ import Link from "next/link";
 const legalLinks = [
 	{ label: "Mentions légales", href: "/legal" },
 	{ label: "Confidentialité", href: "/privacy" },
+	{ label: "Accessibilité", href: "/accessibility" },
 ];
 
 // SEO links removed - not user-facing content
