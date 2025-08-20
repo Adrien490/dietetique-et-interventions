@@ -33,8 +33,8 @@ export default function SignUpPage() {
 					<CardContent className="space-y-6 p-6">
 						<div className="text-center space-y-4">
 							<p className="text-muted-foreground">
-								L'inscription est temporairement désactivée. Si vous avez besoin
-								d'un accès, veuillez nous contacter directement.
+								L&apos;inscription est temporairement désactivée. Si vous avez
+								besoin d&apos;un accès, veuillez nous contacter directement.
 							</p>
 							<div className="space-y-2">
 								<Link
@@ -47,7 +47,7 @@ export default function SignUpPage() {
 									href="/"
 									className="inline-block w-full px-4 py-2 border border-border rounded-md hover:bg-muted transition-colors text-center"
 								>
-									Retour à l'accueil
+									Retour à l&apos;accueil
 								</Link>
 							</div>
 						</div>
