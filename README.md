@@ -526,7 +526,6 @@ npm run test:a11y:prod   # ✅ Fonctionne immédiatement
 **Résultat attendu :**
 
 - ✅ Statut mis à jour visuellement
-- ✅ Note sauvegardée
 - ✅ Filtres de statut fonctionnels
 
 **Résultat obtenu :** ✅ **CONFORME**
