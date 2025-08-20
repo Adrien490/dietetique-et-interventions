@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
 import AccessibilityPage from "@/app/(marketing)/accessibility/page";
+import { render, screen } from "@testing-library/react";
 
 describe("AccessibilityPage", () => {
 	it("should render accessibility page with title", () => {
@@ -27,16 +27,22 @@ describe("AccessibilityPage", () => {
 	it("should render accessibility features", () => {
 		render(<AccessibilityPage />);
 
-		expect(screen.getByText("Navigation complète au clavier")).toBeInTheDocument();
+		expect(
+			screen.getByText("Navigation complète au clavier")
+		).toBeInTheDocument();
 		expect(screen.getByText("Alternatives textuelles")).toBeInTheDocument();
-		expect(screen.getByText("Contrastes conformes WCAG AA")).toBeInTheDocument();
+		expect(
+			screen.getByText("Contrastes conformes WCAG AA")
+		).toBeInTheDocument();
 	});
 
 	it("should render recourse information", () => {
 		render(<AccessibilityPage />);
 
 		expect(screen.getByText("Voies de recours")).toBeInTheDocument();
-		expect(screen.getByText(/Si vous rencontrez un problème d'accessibilité/)).toBeInTheDocument();
+		expect(
+			screen.getByText(/Si vous rencontrez un problème d'accessibilité/)
+		).toBeInTheDocument();
 		expect(screen.getByText("Autorité de contrôle")).toBeInTheDocument();
 	});
 
@@ -75,7 +81,7 @@ describe("AccessibilityPage", () => {
 
 		// Vérifier que la page est navigable
 		expect(screen.getByRole("main")).toBeInTheDocument();
-		
+
 		// Vérifier les liens
 		const links = screen.getAllByRole("link");
 		expect(links.length).toBeGreaterThan(0);

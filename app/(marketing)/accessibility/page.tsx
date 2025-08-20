@@ -21,11 +21,11 @@ export default function AccessibilityPage() {
 				{/* Header */}
 				<div className="text-center mb-8">
 					<h1 className="text-4xl font-bold text-foreground mb-4">
-						Déclaration d'accessibilité
+						Déclaration d&apos;accessibilité
 					</h1>
 					<p className="text-xl text-muted-foreground">
-						Conformité RGAA 4.1 - Référentiel Général d'Amélioration de
-						l'Accessibilité
+						Conformité RGAA 4.1 - Référentiel Général d&apos;Amélioration de
+						l&apos;Accessibilité
 					</p>
 					<div className="flex justify-center gap-2 mt-4">
 						<Badge variant="default">RGAA 4.1</Badge>
@@ -96,7 +96,7 @@ export default function AccessibilityPage() {
 				{/* Résultats des tests */}
 				<Card className="mb-8">
 					<CardHeader>
-						<CardTitle>Résultats des tests d'accessibilité</CardTitle>
+						<CardTitle>Résultats des tests d&apos;accessibilité</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -125,7 +125,7 @@ export default function AccessibilityPage() {
 				{/* Fonctionnalités d'accessibilité */}
 				<Card className="mb-8">
 					<CardHeader>
-						<CardTitle>Fonctionnalités d'accessibilité</CardTitle>
+						<CardTitle>Fonctionnalités d&apos;accessibilité</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -159,12 +159,13 @@ export default function AccessibilityPage() {
 					<CardContent className="space-y-6">
 						<div>
 							<h4 className="font-semibold text-foreground mb-3">
-								Si vous rencontrez un problème d'accessibilité
+								Si vous rencontrez un problème d&apos;accessibilité
 							</h4>
 							<p className="text-muted-foreground mb-4">
-								Si vous constatez un défaut d'accessibilité vous empêchant
-								d'accéder à un contenu ou une fonctionnalité du site, nous vous
-								invitons à nous le signaler par l'un des moyens suivants :
+								Si vous constatez un défaut d&apos;accessibilité vous empêchant
+								d&apos;accéder à un contenu ou une fonctionnalité du site, nous
+								vous invitons à nous le signaler par l&apos;un des moyens
+								suivants :
 							</p>
 							<div className="space-y-3">
 								<div className="p-4 bg-muted rounded-lg">
@@ -184,8 +185,8 @@ export default function AccessibilityPage() {
 									</h5>
 									<p className="text-muted-foreground text-sm">
 										Utilisez le formulaire de contact disponible sur la page
-										d'accueil en précisant "Problème d'accessibilité" dans le
-										sujet.
+										d&apos;accueil en précisant &quot;Problème
+										d&apos;accessibilité&quot; dans le sujet.
 									</p>
 								</div>
 							</div>
@@ -210,9 +211,9 @@ export default function AccessibilityPage() {
 								Autorité de contrôle
 							</h4>
 							<p className="text-muted-foreground">
-								Si vous estimez que votre demande n'a pas reçu de réponse
+								Si vous estimez que votre demande n&apos;a pas reçu de réponse
 								satisfaisante, vous pouvez saisir le Défenseur des droits ou la
-								Commission d'accès aux documents administratifs (CADA).
+								Commission d&apos;accès aux documents administratifs (CADA).
 							</p>
 							<div className="mt-3 space-y-2 text-sm text-muted-foreground">
 								<p>
@@ -236,7 +237,7 @@ export default function AccessibilityPage() {
 								{new Date().toLocaleDateString("fr-FR")}
 							</p>
 							<p className="mt-2">
-								Cette déclaration d'accessibilité est conforme au modèle de
+								Cette déclaration d&apos;accessibilité est conforme au modèle de
 								déclaration officielle établi par le gouvernement français.
 							</p>
 						</div>
