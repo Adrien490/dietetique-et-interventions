@@ -63,7 +63,8 @@ export function Contact() {
 											<Link
 												href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
 												itemProp="email"
-												className="text-sm text-muted-foreground hover:text-primary transition-colors block truncate max-w-full"
+												className="text-sm text-muted-foreground hover:text-primary transition-colors block truncate max-w-full break-all"
+												style={{ wordBreak: 'break-all' }}
 												aria-label="Envoyer un email à Manon Chaillou"
 												aria-describedby="email-tooltip"
 											>
@@ -71,7 +72,7 @@ export function Contact() {
 											</Link>
 										</TooltipTrigger>
 										<TooltipContent id="email-tooltip" role="tooltip">
-											<p>{process.env.NEXT_PUBLIC_EMAIL}</p>
+											<p className="break-all">{process.env.NEXT_PUBLIC_EMAIL}</p>
 										</TooltipContent>
 									</Tooltip>
 								</div>

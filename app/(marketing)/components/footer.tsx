@@ -107,7 +107,8 @@ export function Footer() {
 											<a
 												href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
 												itemProp="email"
-												className="text-sm text-foreground/70 hover:text-foreground transition-colors block truncate max-w-full"
+												className="text-sm sm:text-xs text-foreground/70 hover:text-foreground transition-colors block truncate max-w-full break-all word-break"
+												style={{ wordBreak: "break-all" }}
 												aria-label="Envoyer un email à Manon Chaillou"
 												aria-describedby="footer-email-tooltip"
 											>
@@ -115,7 +116,9 @@ export function Footer() {
 											</a>
 										</TooltipTrigger>
 										<TooltipContent id="footer-email-tooltip" role="tooltip">
-											<p>{process.env.NEXT_PUBLIC_EMAIL}</p>
+											<p className="break-all">
+												{process.env.NEXT_PUBLIC_EMAIL}
+											</p>
 										</TooltipContent>
 									</Tooltip>
 								</div>
