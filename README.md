@@ -156,7 +156,7 @@ prisma/           # Schéma & migrations
 #### Badge de Couverture
 
 ![Coverage Badge](https://img.shields.io/badge/coverage-39.97%25-brightgreen)
-![Tests Status](https://img.shields.io/badge/tests-1129%2F1129%20passing-brightgreen)
+![Tests Status](https://img.shields.io/badge/tests-1381%2F1381%20passing-brightgreen)
 ![Test Success Rate](https://img.shields.io/badge/success%20rate-100%25-brightgreen)
 
 **Qualité du Code :**
@@ -224,7 +224,7 @@ prisma/           # Schéma & migrations
 ### 3.2 C2.2.2 – Harnais de tests unitaires
 
 **Outils** : Jest, RTL, jsdom, mocks (Resend, UploadThing, Better Auth)
-**Couverture** : 1129 tests passants sur 1129 (100% de réussite) avec 39.97% de couverture de code (statements/lines) – actions serveur, schémas Zod, templates email, composants UI (Accordion, Avatar, Checkbox, Dialog, Progress, Table, DropdownMenu, Form, Popover, RadioGroup, Sheet, Tooltip), animations (Rotate, Slide, Stagger), hooks, utils, autocomplete, Hero component, Badge, Textarea, PageHeader, CheckboxField, Dashboard, Footer, ContactForm, page d'accueil
+**Couverture** : 1381 tests passants sur 1381 (100% de réussite) avec 43.07% de couverture de code (statements/lines) – actions serveur, schémas Zod, templates email, composants UI (Accordion, Avatar, Checkbox, Dialog, Progress, Table, DropdownMenu, Form, Popover, RadioGroup, Sheet, Tooltip), animations (Rotate, Slide, Stagger), hooks, utils, autocomplete, Hero component, Badge, Textarea, PageHeader, CheckboxField, Dashboard, Footer, ContactForm, page d'accueil
 
 #### Améliorations Apportées à la Couverture
 
@@ -307,7 +307,7 @@ npm run test:a11y:prod   # ✅ Fonctionne immédiatement
 | Form Context            | 10/10          | 10           | 100%             | ✅ PASS     |
 | UI Components           | 90%+           | Variable     | 90%+             | ✅ PASS     |
 | Shared Utils            | 90%+           | Variable     | 90%+             | ✅ PASS     |
-| **GLOBAL (Tous tests)** | **1129**       | **1129**     | **100%**         | ✅ **PASS** |
+| **GLOBAL (Tous tests)** | **1381**       | **1381**     | **100%**         | ✅ **PASS** |
 
 ---
 
@@ -577,7 +577,7 @@ No issues found!
 
 #### Tests Unitaires Implémentés
 
-**Modules testés (1129/1129 tests passants - 100%) :**
+**Modules testés (1381/1381 tests passants - 100%) :**
 
 - ✅ **Pages app/** - Home, Dashboard, Client, Layouts publics/protégés
 - ✅ **Validation des schémas** - Contact, auth, sign-in/sign-up
