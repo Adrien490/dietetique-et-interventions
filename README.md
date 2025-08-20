@@ -600,107 +600,15 @@ npm run test:e2e         # Tests end-to-end (Playwright)
 
 #### Bugs Réels Documentés et Corrigés
 
-**BUG-001 : Validation email incorrecte dans le formulaire de contact**
+**Aucun bug documenté à ce jour.**
 
-**Priorité :** P2 (Élevée)  
-**Statut :** ✅ CORRIGÉ
+Les issues GitHub sont gérées directement dans le repository :
 
-**Description :**
-Le champ email acceptait des adresses invalides comme "test@" ou "invalid.email"
+- [Issue #1 - Affichage email footer décale le contenu sur mobile](https://github.com/Adrien490/dietetique-et-interventions/issues/1) ✅ CORRIGÉE
 
-**Reproduction :**
+**Processus de gestion :**
 
-1. Aller sur le formulaire de contact
-2. Saisir "test@" dans le champ email
-3. Le formulaire se soumettait sans erreur
-
-**Solution :**
-
-- Mise à jour du schéma Zod dans `contact-schema.ts`
-- Ajout de la validation `z.string().email("Email invalide")`
-- Tests unitaires ajoutés pour vérifier la validation
-
-**Commit :** `fix: improve email validation in contact form (a1b2c3d)`
-
----
-
-**BUG-002 : Upload de fichiers > 4MB non bloqué côté client**
-
-**Priorité :** P1 (Critique)  
-**Statut :** ✅ CORRIGÉ
-
-**Description :**
-Les utilisateurs pouvaient sélectionner des fichiers > 4MB, générant une erreur côté serveur sans feedback utilisateur approprié.
-
-**Reproduction :**
-
-1. Accéder au formulaire de contact
-2. Tenter d'uploader un fichier de 6MB
-3. Erreur serveur 413 sans message explicite
-
-**Solution :**
-
-- Ajout de validation côté client dans le composant d'upload
-- Message d'erreur explicite : "Fichier trop volumineux (max 4MB)"
-- Tests unitaires pour la validation de taille
-
-**Commit :** `fix: add client-side file size validation (b2c3d4e)`
-
----
-
-**BUG-003 : Dashboard inaccessible sur Safari mobile**
-
-**Priorité :** P2 (Élevée)  
-**Statut :** ✅ CORRIGÉ
-
-**Description :**
-L'authentification Better Auth échouait sur Safari iOS, bloquant l'accès au dashboard.
-
-**Reproduction :**
-
-1. Safari iOS 16+
-2. Tenter de se connecter via Google OAuth
-3. Redirection échoue, utilisateur reste sur page de connexion
-
-**Solution :**
-
-- Mise à jour de la configuration Better Auth
-- Test sur multiple navigateurs mobiles
-
-**Commit :** `fix: safari mobile auth compatibility (c3d4e5f)`
-
----
-
-**BUG-005 : Performance dégradée sur mobile avec les animations**
-
-**Priorité :** P3 (Mineure)  
-**Date de détection :** 09/01/2025  
-**Statut :** ✅ CORRIGÉ
-
-**Description :**
-Les animations CSS causaient des ralentissements sur les appareils mobiles moins puissants.
-
-**Reproduction :**
-
-1. Accéder au site sur un appareil mobile ancien
-2. Naviguer entre les sections
-3. Animations saccadées, scroll non fluide
-
-**Solution :**
-
-- Réduire les animations
-
-**Commit :** `fix: optimize animations for mobile performance (e5f6g7h)`
-
-#### Analyse des Tendances
-
-**Points d'amélioration identifiés :**
-
-| Catégorie      | Nombre de bugs | Actions préventives                   |
-| -------------- | -------------- | ------------------------------------- |
-| **Validation** | 2/5            | Renforcer les tests de validation Zod |
-| **Sécurité**   | 1/5            | Audit sécurité trimestriel            |
-| **Mobile**     | 2/5            | Tests systématiques multi-navigateurs |
+- Détection → Issue GitHub → Branche de correction → Tests → Merge → Déploiement
 
 #### Template Issue GitHub
 
