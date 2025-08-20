@@ -46,19 +46,19 @@
 app/              # App Router
   (marketing)/    # Routes publiques (landing)
   dashboard/      # Interface d'administration
-    contacts/     # Gestion des demandes
+    contact-requests/     # Gestion des demandes
     quotes/       # Gestion des devis (à venir)
   api/            # API Routes
   auth/           # Pages d'auth
 
 domains/          # Logique métier par domaines
   auth/           # Authentification, sessions
-  contact/        # Gestion des demandes de contact
+  contact-request/        # Gestion des demandes de contact
     features/     # Actions métier (CRUD, filtres, stats)
-      count-contacts/     # Comptage et statistiques
-      get-contacts/       # Récupération et pagination
-      archive-contact/    # Archivage individuel
-      update-contact-status/  # Changement de statut
+      count-contact-requests/     # Comptage et statistiques
+get-contact-requests/       # Récupération et pagination
+archive-contact-request/    # Archivage individuel
+update-contact-request-status/  # Changement de statut
   user/           # Gestion des utilisateurs
 
 shared/
@@ -541,15 +541,15 @@ No issues found!
 
 - ✅ Connexion réussie
 - ✅ Redirection vers dashboard
-- ✅ Affichage des statistiques de contacts
-- ✅ Menu sidebar avec Tableau de bord, Contacts, Devis
+- ✅ Affichage des statistiques de demandes de contact
+- ✅ Menu sidebar avec Tableau de bord, Contact-requests, Devis
 
 **TC-004 : Fonctionnalités dashboard admin**
 
 **Prérequis :**
 
 - Utilisateur connecté en tant qu'admin
-- Quelques contacts de test dans la base
+- Quelques demandes de contact de test dans la base
 
 **Étapes d'exécution :**
 
@@ -558,14 +558,14 @@ No issues found!
    - Vérifier la section "Actions rapides"
    - Vérifier la section "Activité récente"
 
-2. **Gestion des contacts :**
-   - Naviguer vers "Contacts" dans la sidebar
+2. **Gestion des demandes de contact :**
+   - Naviguer vers "Contact-requests" dans la sidebar
    - Tester la recherche par nom/email
    - Tester les filtres par statut
    - Tester le tri par date/statut/nom
-   - Cliquer sur un contact pour voir les détails
+   - Cliquer sur une demande de contact pour voir les détails
    - Tester le changement de statut
-   - Tester l'archivage d'un contact
+   - Tester l'archivage d'une demande de contact
 
 3. **Navigation :**
    - Tester la sidebar responsive
@@ -577,27 +577,26 @@ No issues found!
 - ✅ Toutes les statistiques s'affichent correctement
 - ✅ La recherche fonctionne en temps réel
 - ✅ Les filtres et tris fonctionnent
-- ✅ Les détails des contacts sont complets
+- ✅ Les détails des demandes de contact sont complets
 - ✅ Les changements de statut sont persistés
 - ✅ L'archivage fonctionne correctement
 - ✅ La navigation est fluide et responsive
 
 ---
 
-**TC-004 : Gestion des contacts dans le dashboard**
+**TC-004 : Gestion des demandes de contact dans le dashboard**
 
 **Prérequis :**
 
 - Authentification admin réussie
-- Au moins 1 contact en base
+- Au moins 1 demande de contact en base
 
 **Étapes d'exécution :**
 
 1. Accéder au dashboard
-2. Cliquer sur un contact
+2. Cliquer sur une demande de contact
 3. Modifier le statut de "Nouveau" vers "En cours"
-4. Ajouter une note : "Contact pris le 09/01/2025"
-5. Sauvegarder les modifications
+4. Sauvegarder les modifications
 
 **Résultat attendu :**
 
@@ -626,15 +625,15 @@ No issues found!
 **Modules testés (1557/1557 tests passants - 100%) :**
 
 - ✅ **Pages app/** - Home, Dashboard, Client, Layouts publics/protégés
-- ✅ **Validation des schémas** - Contact, auth, sign-in/sign-up
-- ✅ **Actions serveur** - Contact, auth, logout, send-email
+- ✅ **Validation des schémas** - Demandes de contact, auth, sign-in/sign-up
+- ✅ **Actions serveur** - Demandes de contact, auth, logout, send-email
 - ✅ **Templates email** - ContactEmailTemplate avec variables dynamiques
 - ✅ **Hooks personnalisés** - Mobile, scroll, form, active navbar
 - ✅ **Composants d'animations** - FadeIn, SlideIn, Reveal, Bounce, ScaleIn
 - ✅ **Composants UI** - Button, Input, Card, Badge, Alert, Skeleton, Label
 - ✅ **Composants formulaires** - InputField, CheckboxField, SelectField, TextareaField, RadioGroupField
 - ✅ **Composants loaders** - DotsLoader, SpinnerLoader, CircleLoader, PulseLoader, GridLoader, WaveLoader, MiniDotsLoader
-- ✅ **Composants de pages** - Services, About, Contact, ServiceItem, Hero, Navbar, FAQ
+- ✅ **Composants de pages** - Services, About, Demandes de contact, ServiceItem, Hero, Navbar, FAQ
 - ✅ **Composants partagés** - Autocomplete, Forms, UserAvatar, UserDropdown, PageHeader
 - ✅ **Utilitaires & lib** - Callbacks, navigation, middleware, form-context
 - ✅ **Fonctions utilitaires** - getSidebarNav, createToastCallbacks, withCallbacks
@@ -818,26 +817,26 @@ UPLOADTHING_APP_ID="xxx"
 
 **🎯 Fonctionnalités du Dashboard :**
 
-| Section                     | Fonctionnalités disponibles                                                                                                                     |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **📊 Tableau de bord**      | • Statistiques en temps réel (total, en cours, traités)<br/>• Actions rapides<br/>• Vue d'ensemble de l'activité                                |
-| **👥 Gestion des Contacts** | • Liste paginée avec tri et filtres<br/>• Recherche en temps réel<br/>• Actions individuelles et en lot<br/>• Vue détaillée avec pièces jointes |
-| **📄 Devis**                | • Fonctionnalité en développement                                                                                                               |
+| Section                                | Fonctionnalités disponibles                                                                                                                     |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **📊 Tableau de bord**                 | • Statistiques en temps réel (total, en cours, traités)<br/>• Actions rapides<br/>• Vue d'ensemble de l'activité                                |
+| **👥 Gestion des demandes de contact** | • Liste paginée avec tri et filtres<br/>• Recherche en temps réel<br/>• Actions individuelles et en lot<br/>• Vue détaillée avec pièces jointes |
+| **📄 Devis**                           | • Fonctionnalité en développement                                                                                                               |
 
-**🔧 Actions de Gestion des Contacts :**
+**🔧 Actions de Gestion des demandes de contact :**
 
-| Action                         | Procédure                                         | Résultat                          |
-| ------------------------------ | ------------------------------------------------- | --------------------------------- |
-| **Voir tous les contacts**     | Dashboard > Contacts                              | Liste paginée avec statuts        |
-| **Rechercher un contact**      | Barre recherche > Nom, email ou message           | Filtrage en temps réel            |
-| **Filtrer par statut**         | Bouton "Filtres" > Sélectionner statuts           | Affichage des contacts filtrés    |
-| **Trier les contacts**         | Menu déroulant tri > Date, statut, nom, email     | Ordre personnalisé                |
-| **Voir détails d'un contact**  | Clic sur contact ou menu actions > "Voir détails" | Page complète avec toutes infos   |
-| **Changer le statut**          | Menu actions > "Changer statut" > Nouveau statut  | Statut mis à jour                 |
-| **Actions en lot**             | Sélection multiple > Menu actions                 | Changement de statut ou archivage |
-| **Archiver un contact**        | Menu actions > "Archiver"                         | Contact déplacé vers archives     |
-| **Voir contacts archivés**     | Bouton "Voir contacts archivés"                   | Vue des contacts archivés         |
-| **Télécharger pièces jointes** | Page détail > Bouton "Télécharger"                | Fichier téléchargé                |
+| Action                                    | Procédure                                                    | Résultat                                   |
+| ----------------------------------------- | ------------------------------------------------------------ | ------------------------------------------ |
+| **Voir toutes les demandes de contact**   | Dashboard > Contact-requests                                 | Liste paginée avec statuts                 |
+| **Rechercher une demande de contact**     | Barre recherche > Nom, email ou message                      | Filtrage en temps réel                     |
+| **Filtrer par statut**                    | Bouton "Filtres" > Sélectionner statuts                      | Affichage des demandes de contact filtrées |
+| **Trier les demandes de contact**         | Menu déroulant tri > Date, statut, nom, email                | Ordre personnalisé                         |
+| **Voir détails d'une demande de contact** | Clic sur demande de contact ou menu actions > "Voir détails" | Page complète avec toutes infos            |
+| **Changer le statut**                     | Menu actions > "Changer statut" > Nouveau statut             | Statut mis à jour                          |
+| **Actions en lot**                        | Sélection multiple > Menu actions                            | Changement de statut ou archivage          |
+| **Archiver une demande de contact**       | Menu actions > "Archiver"                                    | Demande de contact déplacée vers archives  |
+| **Voir demandes de contact archivées**    | Bouton "Voir demandes de contact archivées"                  | Vue des demandes de contact archivées      |
+| **Télécharger pièces jointes**            | Page détail > Bouton "Télécharger"                           | Fichier téléchargé                         |
 
 #### Guide Visiteur
 
