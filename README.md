@@ -76,7 +76,7 @@ prisma/           # Schéma & migrations
 | Technologie     | Alternative Évaluée | Justification du Choix                 |
 | --------------- | ------------------- | -------------------------------------- |
 | **Next.js 15**  | Nuxt.js, Gatsby     | SSR natif, écosystème React            |
-| **Better Auth** | NextAuth, Clerk     | Passkeys natifs, configuration simple  |
+| **Better Auth** | NextAuth, Clerk     | Authentification simple, configuration facile  |
 | **Prisma ORM**  | Drizzle, TypeORM    | Type-safety, migrations versioning     |
 | **Radix UI**    | Chakra, Mantine     | Accessibilité native, personnalisation |
 | **Vercel**      | Netlify, Railway    | Intégration Next.js, CI/CD zéro-config |
@@ -205,7 +205,7 @@ prisma/           # Schéma & migrations
 
 **Critères d'acceptation :**
 
-- Authentification sécurisée (OAuth + passkeys)
+- Authentification sécurisée (Email/Mot de passe)
 - Liste avec filtres par statut et date
 - Actions : traiter, archiver, ajouter notes
 
@@ -323,7 +323,7 @@ npm run test:a11y:prod   # ✅ Fonctionne immédiatement
 | **A04 - Insecure Design**              | Security by design          | DDD + Auth patterns     | Architecture DDD + Better Auth    |
 | **A05 - Security Misconfiguration**    | Headers sécurité + CSP      | Configuration headers   | `next.config.ts` + `vercel.json`  |
 | **A06 - Vulnerable Components**        | npm audit                   | Audit automatique       | `npm audit` clean report          |
-| **A07 - Identification/Auth Failures** | Better Auth + passkeys      | Session + role checks   | `auth.ts` + `getSession()`        |
+| **A07 - Identification/Auth Failures** | Better Auth + Email/Password | Session + role checks   | `auth.ts` + `getSession()`        |
 | **A08 - Software/Data Integrity**      | Build reproductible         | Vercel build hash       | Build artifacts Vercel            |
 | **A09 - Security Logging Failures**    | Sentry                      | Monitoring actif        | `sentry.server.config.ts`         |
 | **A10 - Server-Side Request Forgery**  | Prisma + validation input   | Zod schema validation   | `contact-schema.ts` validation    |
@@ -823,7 +823,7 @@ Le déploiement en production est automatique :
 | Traitement                 | Finalité              | Base légale      | Données                 | Durée            |
 | -------------------------- | --------------------- | ---------------- | ----------------------- | ---------------- |
 | **Demandes contact**       | Gestion consultations | Intérêt légitime | Nom, email, message     | 2 ans            |
-| **Authentification admin** | Accès dashboard       | Contrat          | Email, profil OAuth     | Durée du contrat |
+| **Authentification admin** | Accès dashboard       | Contrat          | Email, mot de passe     | Durée du contrat |
 | **Logs erreurs**           | Debugging             | Intérêt légitime | IP (hashée), User-Agent | 90 jours         |
 
 ### Sous-traitants et DPA
@@ -838,7 +838,7 @@ Le déploiement en production est automatique :
 ### Mesures de Sécurité
 
 - **Chiffrement :** TLS 1.3 transport
-- **Accès :** Authentification OAuth + passkeys
+- **Accès :** Authentification Email/Mot de passe
 - **Audit :** Logs Sentry
 - **Minimisation :** Collecte strictement nécessaire
 
