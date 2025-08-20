@@ -162,6 +162,46 @@ prisma/           # Schéma & migrations
 - ✅ **Status checks** : Vercel deployment, tests coverage
 - ✅ **Branch protection rules** : Configurées dans GitHub
 
+**Workflow de développement :**
+
+```bash
+# 1. Créer une branche pour les modifications
+git checkout -b feature/nom-de-la-fonctionnalite
+# ou
+git checkout -b fix/nom-du-bug
+
+# 2. Développer et tester
+npm run test
+npm run lint
+npm run build
+
+# 3. Commiter les changements
+git add .
+git commit -m "feat: description de la fonctionnalité"
+
+# 4. Pousser la branche
+git push origin feature/nom-de-la-fonctionnalite
+
+# 5. Créer une Pull Request sur GitHub
+# 6. Attendre les checks automatiques
+# 7. Demander une review
+# 8. Merge après approbation
+```
+
+**Configuration GitHub (à activer manuellement) :**
+
+1. **Settings > Branches** : Ajouter une rule pour `main`
+2. **Require a pull request before merging** : ✅ Activé
+3. **Require approvals** : Au moins 1 reviewer
+4. **Require status checks to pass before merging** : ✅ Activé
+   - `npm run test` (tests unitaires)
+   - `npm run build` (build de production)
+   - `npm run lint` (linting)
+5. **Require branches to be up to date** : ✅ Activé
+6. **Restrict pushes that create files** : ✅ Activé
+7. **Allow force pushes** : ❌ Désactivé
+8. **Allow deletions** : ❌ Désactivé
+
 #### Badge de Couverture
 
 ![Coverage Badge](https://img.shields.io/badge/coverage-55.9%25-brightgreen)
@@ -420,6 +460,7 @@ No issues found!
 
 - **GitHub** : Repository public avec protection de branche main
 - **Protection de branche** : Checks requis (tests, build, lint) avant merge
+- **Workflow** : Branches feature/fix → PR → Review → Merge → Deploy
 - **Déploiement** : Vercel auto sur main et preview sur PR
 - **Migrations** : `prisma migrate deploy` à chaque déploiement
 - **Monitoring** : Sentry release health
