@@ -264,3 +264,4 @@ describe("SearchForm", () => {
 		expect(form).toHaveClass("transition-all", "duration-200", "ease-in-out");
 	});
 });
+

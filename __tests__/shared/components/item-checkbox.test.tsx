@@ -186,7 +186,7 @@ describe("ItemCheckbox", () => {
 		expect(mockHandleItemSelectionChange).toHaveBeenCalledWith("", true);
 	});
 
-		it("should properly convert checked state to boolean", () => {
+	it("should properly convert checked state to boolean", () => {
 		// First test: clicking when not selected should call with true
 		mockIsSelected.mockReturnValue(false);
 		const { unmount } = render(<ItemCheckbox itemId="item-1" />);
@@ -198,11 +198,11 @@ describe("ItemCheckbox", () => {
 		// Clear mock calls and unmount first component
 		mockHandleItemSelectionChange.mockClear();
 		unmount();
-		
+
 		// Second test: create new component when selected should call with false when clicked
 		mockIsSelected.mockReturnValue(true);
 		render(<ItemCheckbox itemId="item-2" />);
-		
+
 		const checkboxSelected = screen.getByTestId("item-checkbox");
 		fireEvent.click(checkboxSelected);
 		expect(mockHandleItemSelectionChange).toHaveBeenCalledWith("item-2", false);

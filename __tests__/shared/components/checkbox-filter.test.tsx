@@ -212,3 +212,4 @@ describe("CheckboxFilter", () => {
 		expect(mockIsSelected).toHaveBeenCalledWith("123");
 	});
 });
+

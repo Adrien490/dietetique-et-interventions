@@ -145,7 +145,7 @@ describe("ClearFiltersButton", () => {
 		// Verify all filter keys were checked with prefix
 		expect(mockSearchParams.has).toHaveBeenCalledWith("filter_category");
 		expect(mockSearchParams.has).toHaveBeenCalledWith("filter_price");
-		
+
 		// Verify the button renders because at least one filter is active
 		expect(screen.getByTestId("clear-filters-button")).toBeInTheDocument();
 	});

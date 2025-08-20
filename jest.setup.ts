@@ -82,6 +82,68 @@ jest.mock("better-auth/adapters/prisma", () => ({
 	prismaAdapter: jest.fn(() => ({})),
 }));
 
+// Mock uncrypto to avoid ESM issues
+jest.mock("uncrypto", () => ({
+	default: {
+		getRandomValues: jest.fn(),
+		randomUUID: jest.fn(() => "mock-uuid"),
+		subtle: {},
+	},
+	getRandomValues: jest.fn(),
+	randomUUID: jest.fn(() => "mock-uuid"),
+	subtle: {},
+}));
+
+// Mock jose to avoid ESM issues
+jest.mock("jose", () => ({
+	compactDecrypt: jest.fn(),
+	compactEncrypt: jest.fn(),
+	compactSign: jest.fn(),
+	compactVerify: jest.fn(),
+	flattenedDecrypt: jest.fn(),
+	flattenedEncrypt: jest.fn(),
+	flattenedSign: jest.fn(),
+	flattenedVerify: jest.fn(),
+	generalDecrypt: jest.fn(),
+	generalEncrypt: jest.fn(),
+	generalSign: jest.fn(),
+	generalVerify: jest.fn(),
+	importPKCS8: jest.fn(),
+	importSPKI: jest.fn(),
+	importX509: jest.fn(),
+	importJWK: jest.fn(),
+	exportPKCS8: jest.fn(),
+	exportSPKI: jest.fn(),
+	exportJWK: jest.fn(),
+	generateKeyPair: jest.fn(),
+	generateSecret: jest.fn(),
+	createRemoteJWKSet: jest.fn(),
+	unsecuredJWT: {
+		decode: jest.fn(),
+		encode: jest.fn(),
+	},
+	JWT: {
+		decode: jest.fn(),
+		encode: jest.fn(),
+		verify: jest.fn(),
+		sign: jest.fn(),
+	},
+	JWE: {
+		createEncrypt: jest.fn(),
+		createDecrypt: jest.fn(),
+	},
+	JWS: {
+		createSign: jest.fn(),
+		createVerify: jest.fn(),
+	},
+	JWK: {
+		asKeyStore: jest.fn(),
+		asJWKSet: jest.fn(),
+	},
+}));
+
+
+
 // Suppress console errors during tests
 const originalError = console.error;
 beforeAll(() => {

@@ -26,7 +26,7 @@ const config: Config = {
 	],
 	modulePathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/app/generated/"],
 	transformIgnorePatterns: [
-		"node_modules/(?!(.*\\.mjs$|better-auth|@better-auth|uncrypto|better-call))",
+		"node_modules/(?!(.*\\.mjs$))",
 	],
 	collectCoverageFrom: [
 		"app/**/*.{js,jsx,ts,tsx}",
