@@ -33,8 +33,8 @@ export default function SignUpPage() {
 					<CardContent className="space-y-6 p-6">
 						<div className="text-center space-y-4">
 							<p className="text-muted-foreground">
-								L'inscription est temporairement désactivée. 
-								Si vous avez besoin d'un accès, veuillez nous contacter directement.
+								L'inscription est temporairement désactivée. Si vous avez besoin
+								d'un accès, veuillez nous contacter directement.
 							</p>
 							<div className="space-y-2">
 								<Link
