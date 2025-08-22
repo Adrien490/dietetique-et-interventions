@@ -2,6 +2,7 @@
 
 > **BLOC 2 : CONCEVOIR ET DÉVELOPPER DES APPLICATIONS LOGICIELLES**
 
+**Repository GitHub :** [https://github.com/Adrien490/dietetique-et-interventions](https://github.com/Adrien490/dietetique-et-interventions)  
 **Production :** [https://dietetique-et-interventions.manonchaillou.fr](https://dietetique-et-interventions.manonchaillou.fr)
 
 ---
@@ -554,11 +555,13 @@ No issues found!
 **Étapes d'exécution :**
 
 1. **Tableau de bord :**
+
    - Vérifier les cartes statistiques (Total, En cours, Traités)
    - Vérifier la section "Actions rapides"
    - Vérifier la section "Activité récente"
 
 2. **Gestion des demandes de contact :**
+
    - Naviguer vers "Contact-requests" dans la sidebar
    - Tester la recherche par nom/email
    - Tester les filtres par statut
